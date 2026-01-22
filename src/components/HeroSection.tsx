@@ -40,14 +40,14 @@ const HeroSection = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" asChild>
+            <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <Button variant="hero" size="lg" className="w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6" asChild>
                 <a href={getWhatsAppLink("geral")} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-5 w-5" />
-                  Falar com um contador agora
+                  <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                  <span className="truncate">Falar com um contador agora</span>
                 </a>
               </Button>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6" asChild>
                 <a href="#planos">
                   Ver planos e preços
                 </a>
