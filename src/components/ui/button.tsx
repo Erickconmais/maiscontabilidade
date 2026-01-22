@@ -19,7 +19,7 @@ const buttonVariants = cva(
         hero: "bg-primary text-white hover:opacity-90 shadow-lg hover:shadow-xl transform hover:scale-[1.02]",
         "hero-outline": "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
         plan: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg w-full",
-        "plan-recommended": "bg-gradient-to-r from-[hsl(142_70%_45%)] to-[hsl(150_65%_40%)] text-white shadow-lg hover:shadow-xl w-full transform hover:scale-[1.02]",
+        "plan-recommended": "bg-gradient-to-r from-[hsl(24_95%_53%)] to-[hsl(30_90%_48%)] text-white shadow-lg hover:shadow-xl w-full transform hover:scale-[1.02]",
       },
       size: {
         default: "h-11 px-5 py-2",
