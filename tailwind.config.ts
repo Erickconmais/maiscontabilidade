@@ -7,8 +7,12 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1200px",
         "2xl": "1400px",
       },
     },
@@ -57,33 +61,57 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        trust: {
+          DEFAULT: "hsl(var(--trust-blue))",
+          light: "hsl(var(--trust-blue-light))",
+        },
+        highlight: {
+          DEFAULT: "hsl(var(--highlight))",
+          light: "hsl(var(--highlight-light))",
+        },
+        whatsapp: {
+          DEFAULT: "hsl(142 70% 45%)",
+          hover: "hsl(142 70% 40%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "hero": ["3.5rem", { lineHeight: "1.1", fontWeight: "800" }],
+        "hero-mobile": ["2.25rem", { lineHeight: "1.2", fontWeight: "800" }],
+      },
+      boxShadow: {
+        "soft": "0 4px 20px -4px rgba(0, 0, 0, 0.08)",
+        "medium": "0 8px 30px -8px rgba(0, 0, 0, 0.12)",
+        "strong": "0 12px 40px -12px rgba(0, 0, 0, 0.2)",
+        "glow": "0 0 40px -10px hsl(var(--primary) / 0.4)",
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
