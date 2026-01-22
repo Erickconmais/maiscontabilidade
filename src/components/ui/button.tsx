@@ -16,10 +16,10 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         whatsapp: "bg-[hsl(142_70%_45%)] text-white hover:bg-[hsl(142_70%_40%)] shadow-md hover:shadow-lg",
-        hero: "bg-gradient-to-r from-[hsl(160_84%_39%)] to-[hsl(170_80%_35%)] text-white hover:opacity-90 shadow-lg hover:shadow-xl transform hover:scale-[1.02]",
+        hero: "bg-primary text-white hover:opacity-90 shadow-lg hover:shadow-xl transform hover:scale-[1.02]",
         "hero-outline": "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
         plan: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg w-full",
-        "plan-recommended": "bg-gradient-to-r from-[hsl(160_84%_39%)] to-[hsl(170_80%_35%)] text-white shadow-lg hover:shadow-xl w-full transform hover:scale-[1.02]",
+        "plan-recommended": "bg-gradient-to-r from-[hsl(142_70%_45%)] to-[hsl(150_65%_40%)] text-white shadow-lg hover:shadow-xl w-full transform hover:scale-[1.02]",
       },
       size: {
         default: "h-11 px-5 py-2",
