@@ -147,7 +147,11 @@
   }
 
   .whatsapp-float {
-    @apply fixed bottom-6 right-6 z-50;
+    @apply fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6;
+  }
+
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
   }
 }
 

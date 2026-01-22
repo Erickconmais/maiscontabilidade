@@ -67,7 +67,7 @@ const PlansSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
               key={plan.id}
@@ -114,15 +114,17 @@ const PlansSection = () => {
               <Button
                 variant={plan.recommended ? "plan-recommended" : "plan"}
                 size="lg"
+                className="w-full text-sm px-3"
                 asChild
               >
                 <a
                   href={getWhatsAppLink(plan.id)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="h-4 w-4" />
-                  Quero o Plano {plan.name}
+                  <MessageCircle className="h-4 w-4 flex-shrink-0" />
+                  <span className="truncate">Quero o Plano {plan.name}</span>
                 </a>
               </Button>
             </div>
