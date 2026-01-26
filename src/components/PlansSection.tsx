@@ -77,7 +77,7 @@ const PlansSection = () => {
             >
               {plan.recommended && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full cta-gradient text-primary-foreground text-sm font-semibold shadow-md">
+                  <span className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-md">
                     <Star className="h-4 w-4 fill-current" />
                     Mais escolhido
                   </span>
