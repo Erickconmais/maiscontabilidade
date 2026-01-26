@@ -1,17 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { MessageCircle, Check, Shield, Clock, Users } from "lucide-react";
-
 const HeroSection = () => {
-  const benefits = [
-    { icon: Check, text: "Sem papelada" },
-    { icon: MessageCircle, text: "Atendimento via WhatsApp" },
-    { icon: Shield, text: "Planos acessíveis" },
-    { icon: Users, text: "Especialistas em MEI e Simples Nacional" },
-  ];
-
-  return (
-    <section className="hero-gradient-bg py-16 md:py-24 lg:py-32 overflow-hidden">
+  const benefits = [{
+    icon: Check,
+    text: "Sem papelada"
+  }, {
+    icon: MessageCircle,
+    text: "Atendimento via WhatsApp"
+  }, {
+    icon: Shield,
+    text: "Planos acessíveis"
+  }, {
+    icon: Users,
+    text: "Especialistas em MEI e Simples Nacional"
+  }];
+  return <section className="hero-gradient-bg py-16 md:py-24 lg:py-32 overflow-hidden">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-slide-up">
@@ -22,7 +26,7 @@ const HeroSection = () => {
             
             <h1 className="text-hero-mobile md:text-hero text-foreground text-balance">
               Contabilidade online{" "}
-              <span className="text-primary">simples, econômica</span> e sem burocracia
+              <span className="text-highlight">simples, econômica</span> e sem burocracia
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
@@ -30,14 +34,12 @@ const HeroSection = () => {
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3">
+              {benefits.map((benefit, index) => <div key={index} className="flex items-center gap-3">
                   <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                     <benefit.icon className="h-4 w-4 text-primary" />
                   </div>
                   <span className="text-sm font-medium text-foreground">{benefit.text}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 w-full">
@@ -103,8 +105,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
