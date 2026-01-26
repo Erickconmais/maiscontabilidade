@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { MessageCircle } from "lucide-react";
-
 const Header = () => {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  return <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
           <div className="flex items-center gap-2">
@@ -12,7 +10,7 @@ const Header = () => {
               <span className="text-primary-foreground font-bold text-lg">+</span>
             </div>
             <span className="font-bold text-xl text-foreground">
-              Mais <span className="text-primary">Contabilidade</span>
+              Mais <span className="text-highlight">Contabilidade</span>
             </span>
           </div>
         </a>
@@ -39,8 +37,6 @@ const Header = () => {
           </a>
         </Button>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
