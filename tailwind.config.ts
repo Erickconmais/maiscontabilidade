@@ -61,9 +61,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        trust: {
-          DEFAULT: "hsl(var(--trust-blue))",
-          light: "hsl(var(--trust-blue-light))",
+        orange: {
+          DEFAULT: "hsl(24 95% 53%)",
+          light: "hsl(24 95% 95%)",
         },
         highlight: {
           DEFAULT: "hsl(var(--highlight))",
