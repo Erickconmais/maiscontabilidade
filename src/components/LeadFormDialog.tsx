@@ -54,31 +54,45 @@ const LeadFormDialog = () => {
     }
   };
 
-  const handleNext = () => {
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+
     if (step < 4) {
       setStep(step + 1);
-    } else {
-      setRedirecting(true);
-
-      // Send data to webhook
-      fetch("https://hook.us2.make.com/3e56nx8xf4e8mluy6fz3p5lilmdq2fac", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          possui_empresa: hasCompany,
-          faturamento_atual: revenue,
-          ramo_atividade: activity,
-          nome: name,
-          telefone: phone,
-          plano_interesse: selectedPlan,
-        }),
-      }).catch(() => {});
-
-      setTimeout(() => {
-        window.open(getWhatsAppLink(selectedPlan), "_blank");
-        handleClose(false);
-      }, 2000);
+      return;
     }
+
+    setRedirecting(true);
+
+    const formData = {
+      possui_empresa: hasCompany,
+      faturamento_atual: revenue,
+      ramo_atividade: activity,
+      nome: name,
+      telefone: phone,
+      plano_interesse: selectedPlan,
+    };
+
+    // Push GTM dataLayer event
+    if (typeof window !== "undefined" && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: "form_submit",
+        formId: "lead_form",
+        ...formData,
+      });
+    }
+
+    // Send data to webhook
+    fetch("https://hook.us2.make.com/3e56nx8xf4e8mluy6fz3p5lilmdq2fac", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch(() => {});
+
+    setTimeout(() => {
+      window.open(getWhatsAppLink(selectedPlan), "_blank");
+      handleClose(false);
+    }, 2000);
   };
 
   const handleBack = () => {
@@ -131,6 +145,7 @@ const LeadFormDialog = () => {
           ))}
         </div>
 
+        <form id="lead_form" onSubmit={handleSubmit}>
         <div className="py-4 min-h-[160px]">
           {step === 0 && (
             <div className="space-y-3">
@@ -223,18 +238,19 @@ const LeadFormDialog = () => {
 
         <div className="flex gap-3">
           {step > 0 && (
-            <Button variant="outline" onClick={handleBack} className="flex-1">
+            <Button type="button" variant="outline" onClick={handleBack} className="flex-1">
               Voltar
             </Button>
           )}
           <Button
-            onClick={handleNext}
+            type="submit"
             disabled={!canAdvance()}
             className="flex-1"
           >
             {step < 4 ? "Continuar" : "Ir para o WhatsApp"}
           </Button>
         </div>
+        </form>
       </DialogContent>
     </Dialog>
   );
