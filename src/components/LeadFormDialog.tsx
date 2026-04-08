@@ -54,14 +54,14 @@ const LeadFormDialog = () => {
     }
   };
 
-  const handleSubmit = (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-
+  const handleNext = () => {
     if (step < 4) {
       setStep(step + 1);
-      return;
     }
+  };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setRedirecting(true);
 
     const formData = {
@@ -73,7 +73,6 @@ const LeadFormDialog = () => {
       plano_interesse: selectedPlan,
     };
 
-    // Push GTM dataLayer event
     if (typeof window !== "undefined" && (window as any).dataLayer) {
       (window as any).dataLayer.push({
         event: "form_submit",
@@ -82,7 +81,6 @@ const LeadFormDialog = () => {
       });
     }
 
-    // Send data to webhook
     fetch("https://hook.us2.make.com/3e56nx8xf4e8mluy6fz3p5lilmdq2fac", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -133,7 +131,6 @@ const LeadFormDialog = () => {
           </DialogDescription>
         </DialogHeader>
 
-        {/* Progress bar */}
         <div className="flex gap-1">
           {[0, 1, 2, 3, 4].map((i) => (
             <div
@@ -145,7 +142,6 @@ const LeadFormDialog = () => {
           ))}
         </div>
 
-        <form id="lead_form" onSubmit={handleSubmit}>
         <div className="py-4 min-h-[160px]">
           {step === 0 && (
             <div className="space-y-3">
@@ -226,6 +222,7 @@ const LeadFormDialog = () => {
               </Label>
               <Input
                 id="phone"
+                form="lead_form"
                 type="tel"
                 placeholder="(00) 00000-0000"
                 value={phone}
@@ -242,15 +239,28 @@ const LeadFormDialog = () => {
               Voltar
             </Button>
           )}
-          <Button
-            type="submit"
-            disabled={!canAdvance()}
-            className="flex-1"
-          >
-            {step < 4 ? "Continuar" : "Ir para o WhatsApp"}
-          </Button>
+
+          {step < 4 ? (
+            <Button
+              type="button"
+              onClick={handleNext}
+              disabled={!canAdvance()}
+              className="flex-1"
+            >
+              Continuar
+            </Button>
+          ) : (
+            <form id="lead_form" onSubmit={handleSubmit} className="flex-1">
+              <Button
+                type="submit"
+                disabled={!canAdvance()}
+                className="w-full"
+              >
+                Ir para o WhatsApp
+              </Button>
+            </form>
+          )}
         </div>
-        </form>
       </DialogContent>
     </Dialog>
   );
