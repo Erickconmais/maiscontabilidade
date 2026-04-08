@@ -59,6 +59,21 @@ const LeadFormDialog = () => {
       setStep(step + 1);
     } else {
       setRedirecting(true);
+
+      // Send data to webhook
+      fetch("https://hook.us2.make.com/3e56nx8xf4e8mluy6fz3p5lilmdq2fac", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          possui_empresa: hasCompany,
+          faturamento_atual: revenue,
+          ramo_atividade: activity,
+          nome: name,
+          telefone: phone,
+          plano_interesse: selectedPlan,
+        }),
+      }).catch(() => {});
+
       setTimeout(() => {
         window.open(getWhatsAppLink(selectedPlan), "_blank");
         handleClose(false);
