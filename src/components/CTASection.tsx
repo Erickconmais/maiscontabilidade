@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { getWhatsAppLink } from "@/lib/whatsapp";
 import { MessageCircle, ArrowRight } from "lucide-react";
+import { useLeadForm } from "@/contexts/LeadFormContext";
 
 const CTASection = () => {
+  const { openLeadForm } = useLeadForm();
+
   return (
     <section className="py-20 md:py-28 section-alt">
       <div className="container">
@@ -21,18 +23,11 @@ const CTASection = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 shadow-strong group w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6"
-              asChild
+              onClick={() => openLeadForm("geral")}
             >
-              <a
-                href={getWhatsAppLink("geral")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-                <span>Falar com um contador agora</span>
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
-              </a>
+              <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span>Falar com um contador agora</span>
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
             </Button>
           </div>
         </div>

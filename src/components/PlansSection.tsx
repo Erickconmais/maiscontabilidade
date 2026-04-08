@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { getWhatsAppLink } from "@/lib/whatsapp";
 import { Check, Star, MessageCircle } from "lucide-react";
+import { useLeadForm } from "@/contexts/LeadFormContext";
+import { PlanType } from "@/lib/whatsapp";
+
 const PlansSection = () => {
+  const { openLeadForm } = useLeadForm();
   const plans = [{
     id: "essencial" as const,
     name: "Essencial",
@@ -73,11 +76,14 @@ const PlansSection = () => {
                   </div>)}
               </div>
 
-              <Button variant={plan.recommended ? "plan-recommended" : "plan"} size="lg" className="w-full text-sm px-3" asChild>
-                <a href={getWhatsAppLink(plan.id)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                  <MessageCircle className="h-4 w-4 flex-shrink-0" />
-                  <span className="truncate">Quero o Plano {plan.name}</span>
-                </a>
+              <Button
+                variant={plan.recommended ? "plan-recommended" : "plan"}
+                size="lg"
+                className="w-full text-sm px-3"
+                onClick={() => openLeadForm(plan.id as PlanType)}
+              >
+                <MessageCircle className="h-4 w-4 flex-shrink-0" />
+                <span className="truncate">Quero o Plano {plan.name}</span>
               </Button>
             </div>)}
         </div>

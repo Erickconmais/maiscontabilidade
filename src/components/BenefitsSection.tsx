@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { getWhatsAppLink } from "@/lib/whatsapp";
 import { Laptop, MessageCircle, BadgeCheck, RefreshCw, Building2 } from "lucide-react";
+import { useLeadForm } from "@/contexts/LeadFormContext";
+
 const BenefitsSection = () => {
+  const { openLeadForm } = useLeadForm();
   const benefits = [{
     icon: Laptop,
     title: "Contabilidade 100% online",
@@ -53,11 +55,9 @@ const BenefitsSection = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Button variant="hero" size="xl" asChild>
-            <a href={getWhatsAppLink("geral")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="h-5 w-5" />
-              Falar com um contador agora
-            </a>
+          <Button variant="hero" size="xl" onClick={() => openLeadForm("geral")}>
+            <MessageCircle className="h-5 w-5" />
+            Falar com um contador agora
           </Button>
         </div>
       </div>

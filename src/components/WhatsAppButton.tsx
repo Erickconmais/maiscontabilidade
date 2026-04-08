@@ -1,12 +1,12 @@
 import { MessageCircle } from "lucide-react";
-import { getWhatsAppLink } from "@/lib/whatsapp";
+import { useLeadForm } from "@/contexts/LeadFormContext";
 
 const WhatsAppButton = () => {
+  const { openLeadForm } = useLeadForm();
+
   return (
-    <a
-      href={getWhatsAppLink("geral")}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      onClick={() => openLeadForm("geral")}
       className="whatsapp-float group"
       aria-label="Falar no WhatsApp"
     >
@@ -16,7 +16,7 @@ const WhatsAppButton = () => {
           <MessageCircle className="h-7 w-7 text-primary-foreground" />
         </div>
       </div>
-    </a>
+    </button>
   );
 };
 

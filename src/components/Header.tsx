@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { getWhatsAppLink } from "@/lib/whatsapp";
 import { MessageCircle } from "lucide-react";
+import { useLeadForm } from "@/contexts/LeadFormContext";
+
 const Header = () => {
+  const { openLeadForm } = useLeadForm();
+
   return <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
@@ -30,11 +33,9 @@ const Header = () => {
           </a>
         </nav>
 
-        <Button variant="whatsapp" size="default" asChild>
-          <a href={getWhatsAppLink("geral")} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="h-4 w-4" />
-            <span className="hidden sm:inline">Falar no WhatsApp</span>
-          </a>
+        <Button variant="whatsapp" size="default" onClick={() => openLeadForm("geral")}>
+          <MessageCircle className="h-4 w-4" />
+          <span className="hidden sm:inline">Falar no WhatsApp</span>
         </Button>
       </div>
     </header>;
