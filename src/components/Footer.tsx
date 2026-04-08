@@ -1,7 +1,9 @@
 import { MessageCircle } from "lucide-react";
-import { getWhatsAppLink } from "@/lib/whatsapp";
+import { useLeadForm } from "@/contexts/LeadFormContext";
 
 const Footer = () => {
+  const { openLeadForm } = useLeadForm();
+
   return (
     <footer className="bg-foreground text-primary-foreground py-12">
       <div className="container">
@@ -24,15 +26,13 @@ const Footer = () => {
             <p className="text-sm text-primary-foreground/70 mb-2">
               Fale conosco pelo WhatsApp
             </p>
-            <a
-              href={getWhatsAppLink("geral")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => openLeadForm("geral")}
               className="inline-flex items-center gap-2 text-primary hover:underline font-semibold"
             >
               <MessageCircle className="h-4 w-4" />
               +55 62 9162-3979
-            </a>
+            </button>
           </div>
 
           <div className="text-right">
